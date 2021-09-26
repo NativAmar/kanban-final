@@ -79,12 +79,12 @@ ul{
     padding-top: 3px; ;
    padding-bottom: 3px;
 }
-.lds-dual-ring {
+.loader {
     display: inline-block;
     width: 80px;
     height: 80px;
   }
-  .lds-dual-ring:after {
+  .loader:after {
     content: " ";
     display: block;
     width: 64px;
@@ -93,9 +93,9 @@ ul{
     border-radius: 50%;
     border: 6px solid rgb(24, 18, 18);
     border-color: rgb(8, 4, 4) transparent rgb(14, 7, 7) transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
+    animation: loader 1.2s linear infinite;
   }
-  @keyframes lds-dual-ring {
+  @keyframes loader {
     0% {
       transform: rotate(0deg);
     }

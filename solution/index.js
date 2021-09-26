@@ -273,8 +273,7 @@ document.getElementById("save-btn").addEventListener("click",()=>{saveAPI()})
 
 async function saveAPI(){
     try{
-        loadingEl.setAttribute("class","lds-dual-ring")
-        console.log(data)
+        loadingEl.setAttribute("class","loader")
         const respone = await fetch("https://json-bins.herokuapp.com/bin/614adb844021ac0e6c080c17",{
             headers:{
                 Accept: "application/json", "Content-Type": "application/json"
@@ -283,8 +282,7 @@ async function saveAPI(){
             body : JSON.stringify({"tasks":{data}})
         })
         const localdata = await respone.json();
-        console.log(localdata)
-        loadingEl.removeAttribute("class","lds-dual-ring")
+        loadingEl.removeAttribute("class","loader")
     }
     catch(error){
         alert("You had API problem")
@@ -296,7 +294,7 @@ document.getElementById("load-btn").addEventListener("click",()=>{loadAPI()})
 
 async function loadAPI(){
     try{
-        loadingEl.setAttribute("class","lds-dual-ring")
+        loadingEl.setAttribute("class","loader")
         const respone = await fetch("https://json-bins.herokuapp.com/bin/614adb844021ac0e6c080c17",{
         headers:{
             Accept: "application/json", "Content-Type": "application/json"
@@ -304,10 +302,18 @@ async function loadAPI(){
         method:"GET",
     })
     const localData = await respone.json();
-    console.log(localData.tasks)
-    localStorage.setItem("tasks",JSON.stringify(localData.tasks.data));
-    loadingEl.removeAttribute("class","lds-dual-ring")
-    window.location.reload(false);
+    const uls= document.querySelectorAll("ul");
+    if(JSON.stringify(localData.tasks.data)!==localStorage.tasks){
+        for (const ul of uls) {
+            while (ul.firstChild) {
+                ul.firstChild.remove()
+            }
+        }
+        localStorage.setItem("tasks",JSON.stringify(localData.tasks.data));
+        loadingEl.removeAttribute("class","loader");
+        printData();
+    }
+    // window.location.reload(false);
 }
 catch(error){
     alert("You had API problem")
