@@ -1,4 +1,4 @@
-# Cyber4s 3rd Pre-Course Final Project
+# Cyber4s 3rd Pre-Course Final Project- Nativ Amar
 
 ## What I'm build:
 Welcome to my pre-course final project- a task-management application.
@@ -17,21 +17,21 @@ My GitHub pages link - https://nativamar.github.io/kanban-final/solution/ .
 
 There is 3 `section` elements. One for to-do tasks, one for in-progress tasks, and one for done tasks.
 
-Each `section` should contain:
+Each `section` contain:
 
 - [ ] a `ul` element with the appropriate class - `to-do-tasks`/`in-progress-tasks`/`done-tasks`
 - [ ] an `input` element with an appropriate id - `add-to-do-task`/`add-in-progress-task`/`add-done-task`
 - [ ] a `button` element with an appropriate id - `submit-add-to-do`/`submit-add-in-progress`/`submit-add-done`
-- [ ] Each `ul` should contain task elements, which are `li` elements with the `task` class.
+- [ ] Each `ul` contain task elements, which are `li` elements with the `task` class.
 
 ### Interaction
 
 - [ ] When the user clicks on one of the add-task buttons, a new task will be added to the respective list. The task content will be taken from the    respective input field.
 - [ ] Trying to submit empty tasks should cause an alert.
-- [ ] Double clicking a task element will enable the user to edit its text. When the task element loses focus (`blur` event) the change will be saved.
-- [ ] Hovering over a task element and pressing `alt + 1-3` will move the task to the appropriate list (`1`: todo, `2`: in-progress, `3`: done).
-- [ ] The search input should filter tasks case-**in**sensitively, so that only tasks that match the search string are displayed. The filter will be reapplied every time the user changes the content of the search input (on **every keystroke**).
-- [ ] you can move your tasks with drag&drop function. 
+- [ ] Double clicking a task element will enable the user to edit its text. When the task element loses focus the change will be saved.
+- [ ] Hovering over a task element and pressing `alt + 1-3` will move your tasks to the appropriate list (`1`: todo, `2`: in-progress, `3`: done).
+- [ ] The search input filter tasks case-**in**sensitively, so that only tasks that match the search string are displayed. The filter will be reapplied every time the user changes the content of the search input.
+- [ ] you can move your tasks with drag&drop with your mouse. 
 - [ ] you can save & load your tasks in the API with the save&load buttons. 
 
 ### Storage
