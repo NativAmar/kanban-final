@@ -296,10 +296,10 @@ async function loadAPI(){
     try{
         loadingEl.setAttribute("class","loader")
         const respone = await fetch("https://json-bins.herokuapp.com/bin/614adb844021ac0e6c080c17",{
-        headers:{
+            method:"GET",
+            headers:{
             Accept: "application/json", "Content-Type": "application/json"
         },
-        method:"GET",
     })
     const localData = await respone.json();
     clearData();
