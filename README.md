@@ -3,7 +3,7 @@
 ## What I'm build:
 Welcome to my pre-course final project- a task-management application.
 My GitHub pages link - https://nativamar.github.io/kanban-final/solution/ .
-(/screenShot.jpeg)
+(./screenShot.jpeg)
 ## Instructions
      1.In my Kanban you can add your tasks in the bottom of every section. <br> 
      2. you can move your tasks between the sections wish Alt+1/2/3(1-toDo,2-inProgress,3-Done),
