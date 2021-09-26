@@ -302,20 +302,26 @@ async function loadAPI(){
         method:"GET",
     })
     const localData = await respone.json();
-    const uls= document.querySelectorAll("ul");
-    if(JSON.stringify(localData.tasks.data)!==localStorage.tasks){
-        for (const ul of uls) {
-            while (ul.firstChild) {
-                ul.firstChild.remove()
-            }
-        }
-        localStorage.setItem("tasks",JSON.stringify(localData.tasks.data));
-        loadingEl.removeAttribute("class","loader");
-        printData();
-    }
-    // window.location.reload(false);
+    clearData();
+    localStorage.setItem("tasks",JSON.stringify(localData.tasks.data));
+    printData();
+    loadingEl.removeAttribute("class","loader");
+    window.location.reload(false);
 }
 catch(error){
     alert("You had API problem")
 }
+}
+
+function clearData(){
+    let listim= document.querySelectorAll(".task")
+    for(let li of listim){
+        li.remove();
+    }
+    data={
+        "todo": [],
+        "in-progress": [],
+        "done": []
+    };
+    localStorage.setItem("tasks",JSON.stringify(data))
 }
