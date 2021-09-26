@@ -234,3 +234,82 @@ function pressKeys(e)
     localStorage.setItem("tasks",JSON.stringify(data))
 }
 
+
+
+//Drag & Drop functions 
+function allowDrop(event) {
+    event.preventDefault();
+}
+  
+function drag(event) {
+        event.dataTransfer.setData("text", event.target.id);
+        let list=event.target;
+        let  value=list.textContent;     
+        let PropObj = list.parentElement.parentElement.parentElement.id;   
+        let index = data[PropObj].indexOf(value);
+        data[PropObj].splice(index,1);
+}
+
+function drop(event) {
+        let dat = event.dataTransfer.getData("text");
+        event.target.parentElement.insertBefore(document.getElementById(dat), event.target.parentElement.firstChild);
+        let value=document.getElementById(dat).textContent;
+        if(event.target.parentElement.parentElement.parentElement.classList!="tasks"){
+            console.log('menahem')
+            data[event.target.parentElement.parentElement.id].unshift(value);
+            localStorage.setItem("tasks",JSON.stringify(data));
+        }
+        else{ 
+            console.log(event.target.parentElement.parentElement.parentElement)
+            data[event.target.parentElement.parentElement.parentElement.id].unshift(value);
+            localStorage.setItem("tasks",JSON.stringify(data));
+        }
+}
+
+
+//Save&Load API functions
+const loadingEl= document.getElementById("loading");
+document.getElementById("save-btn").addEventListener("click",()=>{saveAPI()})
+
+async function saveAPI(){
+    try{
+        loadingEl.setAttribute("class","lds-dual-ring")
+        console.log(data)
+        const respone = await fetch("https://json-bins.herokuapp.com/bin/614adb844021ac0e6c080c17",{
+            headers:{
+                Accept: "application/json", "Content-Type": "application/json"
+            },
+            method:"PUT",
+            body : JSON.stringify({"tasks":{data}})
+        })
+        const localdata = await respone.json();
+        console.log(localdata)
+        loadingEl.removeAttribute("class","lds-dual-ring")
+    }
+    catch(error){
+        alert("You had API problem")
+    }
+}
+
+
+document.getElementById("load-btn").addEventListener("click",()=>{loadAPI()})
+
+async function loadAPI(){
+    try{
+        loadingEl.setAttribute("class","lds-dual-ring")
+        const respone = await fetch("https://json-bins.herokuapp.com/bin/614adb844021ac0e6c080c17",{
+        headers:{
+            Accept: "application/json", "Content-Type": "application/json"
+        },
+        method:"GET",
+    })
+    const localData = await respone.json();
+    console.log(localData.tasks)
+    localStorage.setItem("tasks",JSON.stringify(localData.tasks.data));
+    loadingEl.removeAttribute("class","lds-dual-ring")
+    window.location.reload(false);
+}
+catch(error){
+    alert("You had API problem")
+}
+}
