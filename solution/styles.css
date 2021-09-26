@@ -1,0 +1,105 @@
+body{
+    font-family:'Courier New', Courier, monospace;
+    text-align: center;
+    background-image: url(./img/lastOne.jpg);
+}
+h1{
+    font-size: 50px;
+}
+main{
+    justify-content: center;
+    display: flex;
+} 
+.tasks{
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top:25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    font-size: 20px;
+    border-top: 1em;
+    border-bottom: 1em;
+    border-left: 1em;
+    border-right: 1em;
+    /* border-color: black; */
+    border: 6px double; 
+}
+#todo{
+    border-color: red;
+}
+#in-progress{
+    border-color: orange;
+}
+#done{
+    border-color: green;
+}
+section{
+    background-color:beige;
+}
+#Instructions{
+    background-color: beige;
+}
+li{
+    border :1px solid;
+    border-color: black;
+    margin: 2.5px;
+    overflow: hidden;
+    background-color:rgb(243, 233, 216);
+}
+
+#add-to-do-task{
+    position:relative;
+    font-size: 1em;
+    background: linear-gradient(21deg,white,rgb(247, 181, 181));
+    padding: 1px;
+    display: inline-block;
+}
+
+#add-in-progress-task{
+    position:relative;
+    font-size: 1em;
+    background: linear-gradient(21deg,white,rgb(253, 243, 151));
+    padding: 1px;
+    display: inline-block;
+}
+
+#add-done-task{
+    position:relative;
+    font-size: 1em;
+    background: linear-gradient(21deg,white,rgb(179, 250, 155));
+    padding: 1px;
+    display: inline-block;
+}
+ul{
+    padding: auto;
+    padding-top: 3px; ;
+   padding-bottom: 3px;
+}
+.loader {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .loader:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid rgb(24, 18, 18);
+    border-color: rgb(8, 4, 4) transparent rgb(14, 7, 7) transparent;
+    animation: loader 1.2s linear infinite;
+  }
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
